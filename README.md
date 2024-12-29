@@ -40,15 +40,14 @@ This repository contains a comprehensive analysis of employee turnover at Canter
 
 ## Some Key Visualizations
 ### Marginal Effects wtih Confidence Intervals
-![Attrition by Income](images/Marginal Effects wtih Confidence Intervals.png)
+![Attrition by Income](images/Marginal Effect.png)
 
 ### ROC Curve for Decision Tree
-![Attrition by Business Travel](images/attrition_by_travel.png)
+![Attrition by Business Travel](images/ROC Curve Decision Tree.png)
 
 ### Heatmap of Correlation
-![ROC Curve](images/roc_curve_random_forest.png)
+![ROC Curve](images/Heatmap.png)
 
----
 
 ## Workflow
 
