@@ -84,9 +84,4 @@ This repository contains a comprehensive analysis of employee turnover at Canter
 - **Visualization**: Tableau, ggplot2
 - **Modeling**: R (caret, randomForest)
 
----
 
-## Usage
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/username/canterra-attrition-analysis.git
