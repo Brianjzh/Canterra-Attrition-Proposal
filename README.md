@@ -61,27 +61,35 @@ This repository contains a comprehensive analysis of employee turnover at Canter
    - Built and compared Logistic Regression, Decision Tree, Bagged Tree, and Random Forest models.
    - Conducted hyperparameter tuning and cross-validation.
 
-3. **Insights and Recommendations**
-   - Identified high-risk groups (e.g., younger employees, frequent travelers).
-   - Provided actionable strategies to reduce turnover.
-
 ---
 
-## Recommendations
-1. **Enhance Career Development for Younger Employees**
-   - Create mentorship programs and clear growth paths.
-2. **Improve Job Satisfaction**
-   - Introduce recognition programs and flexible work arrangements.
-3. **Offer Competitive Compensation**
-   - Benchmark salaries and implement performance-based incentives.
-4. **Prevent Burnout in Long-Term Employees**
-   - Provide leadership opportunities and skill rotations.
+## Random Forest Model Code Snippet
+```r
+rf_model <- 
+  train(
+    Attrition ~ ., # formula
+    data = train[Attrition_idx, ] |> # data
+      select(
+        -EmployeeID
+      ) |>
+      drop_na(),
+    method = "rf",      # Random Forest method
+    trControl = trainControl(
+      method = "cv", number = 10, # 10-fold cross-validation
+      classProbs = TRUE,  # Enable probability predictions
+      summaryFunction = twoClassSummary  # Use twoClassSummary to compute AUC
+    ),
+    metric = "ROC" # "ROC" gives us AUC & silences warning about Accuracy
+  )
 
----
+rf_model # summary
 
-## Tools and Technologies
-- **Data Cleaning and Preparation**: Python (pandas, numpy)
-- **Visualization**: Tableau, ggplot2
-- **Modeling**: R (caret, randomForest)
+rf_model$finalModel # details of the Random Forest model
 
+rf_model$resample # cross-validation results
 
+vip <- varImp(rf_model) # variable importance
+
+vip
+
+plot(vip, main = "VIP For Random Forest")
